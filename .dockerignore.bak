@@ -1,0 +1,52 @@
+# Docker Ignore File
+# Files and directories to exclude from Docker build context
+
+.git
+.gitignore
+.gitattributes
+.editorconfig
+
+# Node
+node_modules
+npm-debug.log
+
+# Environment files
+.env
+.env.*
+!.env.docker
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Laravel
+storage/app/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+!storage/app/.gitignore
+!storage/framework/.gitignore
+!storage/logs/.gitignore
+
+bootstrap/cache/*
+!bootstrap/cache/.gitignore
+
+# Documentation
+*.md
+!README.md
+
+# Tests
+tests
+phpunit.xml
+
+# Development
+.php_cs.cache
+.phpunit.result.cache

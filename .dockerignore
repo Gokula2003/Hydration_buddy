@@ -1,0 +1,8 @@
+# Docker
+.env.docker
+docker-compose.override.yml
+
+# Keep the main docker files
+!Dockerfile
+!docker-compose.yml
+!.dockerignore
