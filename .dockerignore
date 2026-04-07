@@ -1,8 +1,14 @@
 # Docker
+*.log
 .env.docker
-docker-compose.override.yml
+
+# Docker Compose - Keep for local development only
+# Uncomment the next line if deploying to Render to prevent conflicts
+# docker-compose.yml
 
 # Keep the main docker files
 !Dockerfile
-!docker-compose.yml
+!docker-entrypoint.sh
+!nginx.conf
+!supervisord.conf
 !.dockerignore
