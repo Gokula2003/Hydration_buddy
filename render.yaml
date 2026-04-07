@@ -1,0 +1,53 @@
+# Render.com Deployment Configuration
+# This file tells Render how to build and deploy your application
+
+services:
+  # Web Service
+  - type: web
+    name: hydration-buddy
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_NAME
+        value: HydrationBuddy
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        generateValue: true
+      - key: SESSION_DRIVER
+        value: file
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        fromDatabase:
+          name: hydration-buddy-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: hydration-buddy-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: hydration-buddy-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: hydration-buddy-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: hydration-buddy-db
+          property: password
+
+  # MySQL Database
+  - type: pserv
+    name: hydration-buddy-db
+    env: docker
+    plan: free
+    disk:
+      name: hydration-buddy-data
+      mountPath: /var/lib/mysql
+      sizeGB: 1
